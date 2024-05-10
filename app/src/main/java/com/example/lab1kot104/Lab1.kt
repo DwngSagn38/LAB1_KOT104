@@ -198,6 +198,7 @@ fun equalityCheck(){
 
     println(authors == writers)
     println(authors === writers)
+    questions()
 }
 
 // VD8 : tìm max trong 2 số
