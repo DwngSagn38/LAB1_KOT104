@@ -8,7 +8,6 @@ fun main(){
 }
 
 fun menu(){
-    var r : String?
     do {
         println("\t\tBai4 Lab2")
         println("\t1. Hiển thị danh sách sinh viên")
@@ -19,9 +18,9 @@ fun menu(){
         var s = readLine()
         optionMenu(s!!)
 
-        println("Bạn có muốn tiếp tục không (nhấn n để thoát) ?")
-        r = readLine()
-        if (r == "n"){
+        println("Nhập bất kỳ để tiếp tục , nhập e để thoát : ")
+        var r = readLine()
+        if (r == "e"){
             break
         }
     }while (true)
@@ -66,8 +65,13 @@ fun addSV(list: MutableList<SinhVienModel>){
     var ten = readLine().toString()
     println("Nhập mã sinh viên : ")
     var mssv = readLine().toString()
-    println("Nhập điểm TB : ")
-    var diemTB = readLine().toString().toFloat()
+
+    var diemTB : Float
+    do {
+        println("Nhập điểm TB (0-10): ")
+        diemTB = readLine().toString().toFloat()
+    }while (diemTB < 0 || diemTB > 10)
+
     println("Đã tốt nghiệp chưa (y/n): ")
     var daTotNghiep : Boolean?
     var s = readLine()
@@ -78,6 +82,7 @@ fun addSV(list: MutableList<SinhVienModel>){
     }else{
         daTotNghiep = null
     }
+
     println("Nhập tuổi : ")
     var tuoi : Int?
     tuoi = readLine()?.toIntOrNull()
@@ -120,8 +125,11 @@ fun editSV(list: MutableList<SinhVienModel>){
             sinhvien.tenSV = readLine().toString()
             println("Nhập mã sinh viên : ")
             sinhvien.mssv = readLine().toString()
-            println("Nhập điểm TB : ")
-            sinhvien.diemTB = readLine().toString().toFloat()
+            do {
+                println("Nhập điểm TB (0-10): ")
+                sinhvien.diemTB = readLine().toString().toFloat()
+            }while (sinhvien.diemTB < 0 || sinhvien.diemTB > 10)
+
             println("Đã tốt nghiệp chưa (y/n): ")
             var s = readLine()
             if (s == "y"){
