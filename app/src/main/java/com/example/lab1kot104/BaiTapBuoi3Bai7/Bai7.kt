@@ -1,4 +1,6 @@
 package com.example.lab1kot104.BaiTapBuoi3Bai7
+
+
 fun main(){
     do {
         println("Bài 7 buổi 3 PH42693")
@@ -23,32 +25,35 @@ fun main(){
 
 fun addCBGV(){
     println("Nhập tên CBGV: ")
-    var hoTen = readLine()
-
-    println("Nhập tuổi : ")
-    var tuoi = readLine()?.toIntOrNull() ?: -1
+    var hoTen = readLine().toString()
+    var tuoi = 0
+    do {
+        println("Nhập tuổi : ")
+        tuoi = readLine()?.toIntOrNull() ?: -1
+        if (tuoi > 0) break
+    }while (true)
 
     println("Nhập quê quán : ")
-    var queQuan = readLine()
+    val queQuan = readLine().toString()
 
     println("Nhập msgv : ")
-    var msgv = readLine()
+    val msgv = readLine().toString()
 
     println("Nhập Lương cứng : ")
-    var luongCung = readLine()?.toFloatOrNull()
+    val luongCung = readLine()?.toFloatOrNull() ?: 0f
 
     println("Nhập Lương Thưởng : ")
-    var luongThuong = readLine()?.toFloatOrNull()
+    val luongThuong = readLine()?.toFloatOrNull() ?: 0f
 
     println("Nhập tiền phạt : ")
-    var tienPhat = readLine()?.toFloatOrNull()
+    val tienPhat = readLine()?.toFloatOrNull() ?: 0f
 
-    var gv = CBGV(hoTen!!,tuoi,queQuan!!,msgv!!,luongCung!!,luongThuong!!,tienPhat!!)
+    val gv = CBGV(hoTen,tuoi,queQuan,msgv,luongCung,luongThuong,tienPhat)
     CBGV.themCBGV(gv)
 }
 
 fun deleteCBGV(){
     println("Nhập mã số giáo viên muốn xóa : ")
-    var maGv = readLine()
-    CBGV.xoaCBGV(maGv!!)
+    val maGv = readLine().toString()
+    CBGV.xoaCBGV(maGv)
 }
